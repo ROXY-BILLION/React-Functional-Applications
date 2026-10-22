@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.counter-page {
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 45px 20px;
+  background: #f5f4ff;
+  color: #242344;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.counter-decoration {
+  position: absolute;
+  z-index: -1;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.decoration-one {
+  top: -120px;
+  left: -70px;
+  background: #e4ddff;
+}
+
+.decoration-two {
+  right: -100px;
+  bottom: -100px;
+  background: #d6f5f0;
+}
+
+.counter-card {
+  width: 100%;
+  max-width: 460px;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow:
+    0 30px 80px rgba(81, 67, 145, 0.09),
+    0 5px 20px rgba(81, 67, 145, 0.04);
+  animation: card-appear 0.6s ease both;
+}
+
+.counter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.counter-logo {
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: #eee9ff;
+  color: #7555df;
+  font-size: 25px;
+}
+
+.saved-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 11px;
+  border-radius: 30px;
+  background: #edfaf3;
+  color: #21845b;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+}
+
+.saved-dot,
+.count-indicator span {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #32bd80;
+}
+
+.counter-intro {
+  margin-top: 32px;
+}
+
+.counter-eyebrow {
+  margin-bottom: 12px;
+  color: #8066dd;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.counter-intro h1 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(30px, 7vw, 39px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -1.8px;
+}
+
+.counter-intro h1 span {
+  color: #8066dd;
+}
+
+.counter-description {
+  margin-top: 12px;
+  color: #8b8aa4;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.counter-display {
+  min-height: 205px;
+  margin-top: 28px;
+  padding: 25px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #eae5ff;
+  border-radius: 23px;
+  background: linear-gradient(145deg, #f8f6ff, #f0edff);
+}
+
+.display-label {
+  color: #9186bd;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.counter-number {
+  max-width: 100%;
+  margin: 8px 0;
+  overflow-wrap: anywhere;
+  color: #7053d6;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(64px, 16vw, 88px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -4px;
+  animation: number-appear 0.25s ease;
+}
+
+.count-indicator {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #8985a4;
+  font-size: 10px;
+}
+
+.counter-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.counter-button {
+  min-height: 76px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  border: none;
+  border-radius: 18px;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.counter-button span {
+  font-size: 27px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.counter-button small {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.decrease-button {
+  border: 1px solid #eceaf5;
+  background: #ffffff;
+  color: #57536f;
+}
+
+.decrease-button:hover {
+  background: #f7f5ff;
+  box-shadow: 0 8px 20px rgba(72, 60, 120, 0.08);
+}
+
+.increase-button {
+  background: linear-gradient(135deg, #9278ef, #7454d9);
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(116, 84, 217, 0.2);
+}
+
+.increase-button:hover {
+  box-shadow: 0 12px 25px rgba(116, 84, 217, 0.3);
+}
+
+.counter-button:hover {
+  transform: translateY(-3px);
+}
+
+.counter-button:active {
+  transform: scale(0.97);
+}
+
+.reset-button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 14px;
+  background: transparent;
+  color: #88859f;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.reset-button span {
+  font-size: 18px;
+}
+
+.reset-button:hover {
+  background: #f7f5ff;
+  color: #7053d6;
+}
+
+.counter-footer {
+  margin-top: 18px;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid #f0eef7;
+}
+
+.footer-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #eaf9f1;
+  color: #219768;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.footer-title {
+  color: #484560;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.footer-description {
+  margin-top: 4px;
+  color: #9b99ae;
+  font-size: 10px;
+}
+
+.page-caption {
+  margin-top: 25px;
+  color: #aaa5c5;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+@keyframes card-appear {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes number-appear {
+  from {
+    opacity: 0.4;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .counter-page {
+    padding: 28px 15px;
+  }
+
+  .counter-card {
+    padding: 24px 20px;
+    border-radius: 25px;
+  }
+
+  .counter-intro {
+    margin-top: 27px;
+  }
+
+  .counter-display {
+    min-height: 180px;
+  }
+
+  .saved-badge {
+    font-size: 8px;
+  }
+
+  .page-caption {
+    font-size: 8px;
+    letter-spacing: 1.3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
