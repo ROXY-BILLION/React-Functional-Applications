@@ -1,0 +1,351 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+    font-family: 'Manrope', sans-serif;
+    color: #edfaff;
+    background: #070b14;
+
+    --bg: #070b14;
+    --surface: #0d1422;
+    --border: #1c3040;
+    --cyan: #67e8f9;
+    --muted: #718698;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    background: var(--bg);
+}
+
+.clock-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    padding: 35px 20px;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 45%, #0d34452c, transparent 48%),
+        radial-gradient(circle at 10% 10%, #17334a20, transparent 30%),
+        var(--bg);
+}
+
+/* Main clock panel */
+.clock-card {
+    position: relative;
+    width: 100%;
+    max-width: 660px;
+    min-height: 470px;
+    padding: 28px 34px;
+    overflow: hidden;
+    border: 1px solid #20394a;
+    border-radius: 22px;
+    background:
+        linear-gradient(145deg, #101c2b, #0b111e 65%);
+    box-shadow:
+        0 30px 90px #00000050,
+        inset 0 1px 0 #ffffff08;
+}
+
+/* Top navigation */
+.clock-top {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.clock-brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.clock-brand-icon {
+    width: 33px;
+    height: 33px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #67e8f940;
+    border-radius: 10px;
+    background: #67e8f910;
+    color: var(--cyan);
+    font-size: 20px;
+}
+
+.brand-dot {
+    margin-left: -9px;
+    color: var(--cyan);
+}
+
+.live-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border: 1px solid #67e8f925;
+    border-radius: 20px;
+    background: #67e8f908;
+    color: var(--cyan);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 10px #67e8f9a0;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Decorative clock orbit */
+.clock-decoration {
+    position: absolute;
+    top: 65px;
+    right: -50px;
+    width: 240px;
+    height: 240px;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.orbit {
+    position: absolute;
+    border: 1px solid #67e8f914;
+    border-radius: 50%;
+}
+
+.orbit-one {
+    inset: 0;
+}
+
+.orbit-two {
+    inset: 28px;
+    border-color: #67e8f925;
+}
+
+.orbit-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 95px;
+    height: 95px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #67e8f930;
+    border-radius: 50%;
+    background: #67e8f908;
+    transform: translate(-50%, -50%);
+}
+
+.orbit-core {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 20px #67e8f9;
+}
+
+/* Time display */
+.clock-content {
+    position: relative;
+    z-index: 1;
+    padding-top: 70px;
+    text-align: center;
+}
+
+.clock-label {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.time {
+    margin-top: 20px;
+    color: #e9fbff;
+    font-family: 'DM Mono', monospace;
+    font-size: clamp(44px, 9vw, 76px);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -3px;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 35px #67e8f91a;
+}
+
+.clock-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 23px auto 18px;
+}
+
+.clock-divider > span:not(.divider-center) {
+    width: 55px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #315568);
+}
+
+.clock-divider > span:first-child {
+    transform: rotate(180deg);
+}
+
+.divider-center {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 12px #67e8f9a0;
+}
+
+.clock-date {
+    color: #b0c6d2;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Bottom information */
+.clock-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 52px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    text-align: left;
+}
+
+.clock-footer > div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.footer-label {
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.clock-footer strong {
+    color: #d4e8f0;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.timezone {
+    max-width: 65%;
+    text-align: right;
+}
+
+.timezone strong {
+    overflow-wrap: anywhere;
+}
+
+/* Signature */
+.clock-signature {
+    color: #52697a;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.clock-signature span {
+    padding: 0 6px;
+    color: var(--cyan);
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 10px #67e8f9a0;
+    }
+
+    50% {
+        opacity: 0.45;
+        box-shadow: 0 0 3px #67e8f940;
+    }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+    .clock-page {
+        padding: 20px 14px;
+    }
+
+    .clock-card {
+        min-height: 430px;
+        padding: 22px 18px;
+        border-radius: 17px;
+    }
+
+    .clock-decoration {
+        top: 60px;
+        right: -100px;
+        transform: scale(0.8);
+    }
+
+    .clock-content {
+        padding-top: 75px;
+    }
+
+    .time {
+        font-size: clamp(38px, 11vw, 56px);
+        letter-spacing: -2px;
+    }
+
+    .clock-date {
+        font-size: 11px;
+    }
+
+    .clock-footer {
+        margin-top: 45px;
+    }
+
+    .footer-label {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .clock-footer strong {
+        font-size: 9px;
+    }
+
+    .clock-signature {
+        font-size: 7px;
+        letter-spacing: 1.3px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
