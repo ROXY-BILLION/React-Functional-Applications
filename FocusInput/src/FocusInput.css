@@ -1,0 +1,30 @@
+.focus-app {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 25px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.focus-app input {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+}
+
+.focus-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.focus-buttons button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
